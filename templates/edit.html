@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Cita</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>✏️ Reprogramar Cita</h1>
+
+    <form action="/update/{{ appointment.id }}" method="POST">
+        <input type="text" name="name" value="{{ appointment.name }}" required>
+        <input type="text" name="dog_name" value="{{ appointment.dog_name }}" required>
+        <input type="date" name="date" value="{{ appointment.date }}" required>
+        <input type="time" name="time" value="{{ appointment.time }}" required>
+
+        <button type="submit">Guardar Cambios</button>
+    </form>
+
+    <br>
+    <a href="/">⬅️ Volver</a>
+</div>
+
+</body>
+</html>

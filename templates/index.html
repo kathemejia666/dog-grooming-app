@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Agenda Baño Canino</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>🐶 Agenda de Baño Canino</h1>
+
+    <form action="/book" method="POST">
+        <input type="text" name="name" placeholder="Tu nombre" required>
+        <input type="text" name="dog_name" placeholder="Nombre de tu perro" required>
+        <input type="date" name="date" required>
+        <input type="time" name="time" required>
+        <button type="submit">Agendar Cita</button>
+    </form>
+
+    <h2>Citas Agendadas</h2>
+
+    <ul>
+        {% for appt in appointments %}
+            <li>
+    <strong>{{ appt.dog_name }}</strong> - {{ appt.name }}<br>
+    📅 {{ appt.date }} ⏰ {{ appt.time }}
+
+    <br>
+    <a href="/edit/{{ appt.id }}">
+        <button>✏️ Editar</button>
+    </a>
+
+    <a href="/delete/{{ appt.id }}">
+        <button>❌ Eliminar</button>
+    </a>
+</li>
+        {% endfor %}
+    </ul>
+</div>
+
+</body>
+</html>
