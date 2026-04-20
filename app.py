@@ -13,7 +13,6 @@ def get_db_connection():
     )
 
 
-# 👉 VER TODAS LAS CITAS
 @app.route('/')
 def index():
     db = get_db_connection()
@@ -25,7 +24,6 @@ def index():
     return render_template('index.html', appointments=appointments)
 
 
-# 👉 CREAR CITA
 @app.route('/book', methods=['POST'])
 def book():
     name = request.form['name']
@@ -48,7 +46,6 @@ def book():
     return redirect(url_for('index'))
 
 
-# 👉 ELIMINAR CITA
 @app.route('/delete/<int:id>')
 def delete(id):
     db = get_db_connection()
@@ -60,7 +57,6 @@ def delete(id):
     return redirect(url_for('index'))
 
 
-# 👉 MOSTRAR FORMULARIO PARA EDITAR
 @app.route('/edit/<int:id>')
 def edit(id):
     db = get_db_connection()
@@ -76,7 +72,6 @@ def edit(id):
     return render_template('edit.html', appointment=appointment)
 
 
-# 👉 ACTUALIZAR (REPROGRAMAR) CITA
 @app.route('/update/<int:id>', methods=['POST'])
 def update(id):
     name = request.form['name']
@@ -103,6 +98,5 @@ def update(id):
     return redirect(url_for('index'))
 
 
-# 👉 INICIAR SERVIDOR
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
